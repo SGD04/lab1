@@ -15,6 +15,7 @@ public class main {
     public static void main(String[] args) {
 
         PostRepository postRepositoryImpl = new PostRepositoryImpl();
+
         System.out.println("Hello user");
         PublicationService publicationService = new PublicationService(postRepositoryImpl);
 
