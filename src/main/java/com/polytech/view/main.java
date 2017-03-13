@@ -1,9 +1,10 @@
 package com.polytech.view;
 
 import com.polytech.business.Post;
-import com.polytech.business.PublicationServiceImpl;
-import com.polytech.repository.PostRepository;
-import com.polytech.repository.PostRepositoryImpl;
+import com.polytech.business.PublicationService;
+import com.polytech.config.ApplicationConfig;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
 
@@ -14,15 +15,24 @@ public class main {
 
     public static void main(String[] args) {
 
-        PostRepository postRepositoryImpl = new PostRepositoryImpl();
-
         System.out.println("Hello user");
-        PublicationServiceImpl publicationServiceImpl = new PublicationServiceImpl(postRepositoryImpl);
+        /*PostRepository postRepositoryImpl = new PostRepositoryImpl();
+        PublicationServiceImpl publicationServiceImpl = new PublicationServiceImpl(postRepositoryImpl);*/
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+
+        PublicationService publicationService = applicationContext.getBean(PublicationService.class);
 
         Post post = new Post("welcome to Luminy");
-        publicationServiceImpl.post(post);
+        publicationService.post(post);
 
-        List<Post> posts = publicationServiceImpl.fetchAll();
+        Post post2 = new Post("il fait beau");
+        publicationService.post(post2);
+
+        Post post3 = new Post("j'ai envie de manger une pizza!!");
+        publicationService.post(post3);
+
+        List<Post> posts = publicationService.fetchAll();
         System.out.println(posts);
     }
 }
