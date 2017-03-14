@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 import javax.sql.DataSource;
 
@@ -36,8 +39,9 @@ public class ApplicationConfig {
     @Autowired
     private Environment environment;
 
-    @Bean
-    public DataSource dataSource() {
+    @Bean(name = "dataSource")
+    @Profile("PROD")
+    public DataSource ProddataSource() {
         String driverClassName = environment.getProperty("datasource.driverName");
         String url = environment.getProperty("datasource.url");
         String username = environment.getProperty("datasource.username");
@@ -61,13 +65,14 @@ public class ApplicationConfig {
     //    return dataSource;
     //}
 
-    //@Bean
-    //public DataSource dataSource(){
-    //    return new EmbeddedDatabaseBuilder()
-    //            .setType(EmbeddedDatabaseType.H2)
-    //            .addScript("create-schema.sql")
-    //            .build();
-    //}
+    @Bean(name = "dataSource")
+    @Profile("DEV")
+    public DataSource DevdataSource(){
+        return new EmbeddedDatabaseBuilder()
+                .setType(EmbeddedDatabaseType.H2)
+                .addScript("create-schema.sql")
+                .build();
+    }
 
     //@Bean
     //public DataSource dataSource() {
@@ -80,8 +85,8 @@ public class ApplicationConfig {
     //}
 
     @Bean
-    public PostRepository postRepository(){
-        return new jdbcPostRepository(dataSource());
+    public PostRepository postRepository(DataSource dataSource){
+        return new jdbcPostRepository(dataSource);
     }
 
     @Bean

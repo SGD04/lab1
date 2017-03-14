@@ -17,6 +17,8 @@ public class main {
 
         System.out.println("Hello user");
 
+        System.setProperty("spring.profiles.active","DEV");
+
         /*PostRepository postRepositoryImpl = new jdbcPostRepository();
         PublicationServiceImpl publicationServiceImpl = new PublicationServiceImpl(postRepositoryImpl);*/
 
