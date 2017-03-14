@@ -16,7 +16,8 @@ public class main {
     public static void main(String[] args) {
 
         System.out.println("Hello user");
-        /*PostRepository postRepositoryImpl = new PostRepositoryImpl();
+
+        /*PostRepository postRepositoryImpl = new jdbcPostRepository();
         PublicationServiceImpl publicationServiceImpl = new PublicationServiceImpl(postRepositoryImpl);*/
 
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
