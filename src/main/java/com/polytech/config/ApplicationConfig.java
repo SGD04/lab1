@@ -7,13 +7,11 @@ import com.polytech.repository.jdbcPostRepository;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 
@@ -21,6 +19,8 @@ import javax.sql.DataSource;
  * Created by norabbit on 13/03/17.
  */
 @Configuration
+@Component
+@ComponentScan("com.polytech")
 @PropertySource("classpath:/application.properties")
 public class ApplicationConfig {
 
@@ -84,13 +84,13 @@ public class ApplicationConfig {
     //    return dataSource;
     //}
 
-    @Bean
-    public PostRepository postRepository(DataSource dataSource){
-        return new jdbcPostRepository(dataSource);
-    }
+    //@Bean
+    //public PostRepository postRepository(DataSource dataSource){
+    //    return new jdbcPostRepository(dataSource);
+    //}
 
-    @Bean
-    public PublicationService publicationService(PostRepository postRepository){
-        return new PublicationServiceImpl(postRepository);
-    }
+    //@Bean
+    //public PublicationService publicationService(PostRepository postRepository){
+    //    return new PublicationServiceImpl(postRepository);
+    //}
 }

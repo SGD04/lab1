@@ -1,4 +1,4 @@
-package com.polytech.view;
+package com.polytech.web;
 
 import com.polytech.business.Post;
 import com.polytech.business.PublicationService;

@@ -1,6 +1,7 @@
 package com.polytech.repository;
 
 import com.polytech.business.Post;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * Created by norabbit on 13/03/17.
  */
+@Repository
 public class jdbcPostRepository implements PostRepository {
 
     private DataSource dataSource;
