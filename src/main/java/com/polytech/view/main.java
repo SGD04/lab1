@@ -24,13 +24,13 @@ public class main {
 
         PublicationService publicationService = applicationContext.getBean(PublicationService.class);
 
-        Post post = new Post("welcome to Luminy");
+        Post post = new Post("welcome to Polytech");
         publicationService.post(post);
 
-        Post post2 = new Post("il fait beau");
+        Post post2 = new Post("il fait chaud");
         publicationService.post(post2);
 
-        Post post3 = new Post("j'ai envie de manger une pizza!!");
+        Post post3 = new Post("j'ai envie de manger un burger");
         publicationService.post(post3);
 
         List<Post> posts = publicationService.fetchAll();
