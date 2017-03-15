@@ -23,7 +23,7 @@ public class ShareController {
     @RequestMapping(value = "/share", method = RequestMethod.POST)
     public String sharePost(Post post){
         publicationService.post(post);
-        return "hello";
+        return "redirect:/feed";
     }
 
     @RequestMapping(value = "/feed", method = RequestMethod.GET)

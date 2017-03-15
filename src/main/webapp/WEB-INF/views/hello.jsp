@@ -1,3 +1,5 @@
+<%@ page import="com.polytech.business.Post" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,15 +57,24 @@
 
 <div class="container">
 
-    <form method="GET" , action="/feed">
         <div>
             <h1>The Timeline</h1>
         </div>
-
+        <%
+            List<Post> postList = (List<Post>) request.getAttribute("posts");
+        %>
+        <!-- Posts -->
+        <h3>Message posts</h3>
+        <ul>
+            <%
+                for(Post post : postList){
+            %>
+            <i><%=post.getContent()%></i><br>
+            <%}%>
+        </ul>
         <div>
-            <button type="submit" class="btn btn-default">feed</button>
+            <button type="submit" class="btn btn-default">write your post</button>
         </div>
-    </form>
 
 </div><!-- /.container -->
 
