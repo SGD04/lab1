@@ -24,7 +24,7 @@ import javax.sql.DataSource;
 @PropertySource("classpath:/application.properties")
 public class ApplicationConfig {
 
-    @Value("${datasource.driverName}")
+   /* @Value("${datasource.driverName}")
     private String driverClassName;
 
     @Value("${datasource.url}")
@@ -34,7 +34,7 @@ public class ApplicationConfig {
     private String username;
 
     @Value("${datasource.password}")
-    private String password;
+    private String password;*/
 
     @Autowired
     private Environment environment;

@@ -26,6 +26,6 @@ public class PnetWebAppInitializer extends AbstractAnnotationConfigDispatcherSer
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
-        servletContext.setInitParameter("spring.profiles.active", "DEV");
+        servletContext.setInitParameter("spring.profiles.active", "PROD");
     }
 }
