@@ -30,7 +30,7 @@ public class ShareController {
     public String readPost(Map model){
         List<Post> posts = publicationService.fetchAll();
         model.put("posts", posts);
-        return "hello";
+        return "feed";
     }
 
 }

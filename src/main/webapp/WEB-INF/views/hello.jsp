@@ -60,18 +60,25 @@
         <div>
             <h1>The Timeline</h1>
         </div>
-        <%
-            List<Post> postList = (List<Post>) request.getAttribute("posts");
-        %>
-        <!-- Posts -->
+        <div>
         <h3>Message posts</h3>
-        <ul>
             <%
-                for(Post post : postList){
+                List<Post> postList = (List<Post>) request.getAttribute("posts");
             %>
-            <i><%=post.getContent()%></i><br>
+            <%
+                for (Post post : postList) {
+            %>
+            <div class="row feed">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <%=post.getContent()%>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <%}%>
-        </ul>
+        </div>
         <div>
             <button type="submit" class="btn btn-default">write your post</button>
         </div>
